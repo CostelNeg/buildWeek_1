@@ -17,3 +17,7 @@ Mercoledi, Giovedi :
 Venerdi : 
     Mirko, Giacomo : vedere le ultime cose ed aiutare per js 
     Simone, Costa : vedere le ultime cose di front.
+
+
+togliere un punto per ogni risposta errata
+sviluppare codice su pagina vuota per testarne il sicuro funzionamento
