@@ -10,15 +10,15 @@ body {
   width: 150px;
 }
 
-main{
-    color: white;
-    margin: 0%;
+main {
+  color: white;
 }
-main p:first-child{
-    font-size: 4em;
-    padding: 0%;
+main h1:first-child {
+ font-size: 3em;
+  padding: 0%;
 }
-main span{
-    padding: 0%;
-    display: block;
+main span {
+  padding: 0%;
+  display: block;
+  margin: auto;
 }
