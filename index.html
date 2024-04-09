@@ -9,39 +9,39 @@
 </head>
 
 <body>
-    <header>
-        <div class="top">
-            <img src="./assets/img/epicode_logo.png" alt="">
-
-        </div>
-
-    </header>
-
+    <div class="top">
+        <img src="./assets/img/epicode_logo.png" alt="">
+    </div>
     <main>
-        <h1>Welcome to <span>your exam</span></h1>
-        <p><b>
-                <h2>Instruction</h2>
-            </b>
-            We don't expect most engineers to know the answers to all of these questions, so don't worry if you're
-            unsure of a few of them.
-        </p>
-        <ul>
-            <li>Each question is timed and can only be answered once.</li>
-            <li>Changing browser tab or opening other windows will invalidate the question.</li>
-            <li>This exam will take approx. 0-5 minutes.</li>
-        </ul>
-
-
-
-
+        <p>Welcome to <span>your exam</span></p>
+        <div class="instruction">
+            <p><b>Instructions</b></p>
+            <p>We don't expect most engineers to konw the
+                answers to all of these questions, so don't
+                worry if you're unsure of a few of them
+            </p>
+            <ul>
+                <li>Each question is <b>timed</b> and can only be <b>answered once.</b></li>
+                <li>Changing browser tab or opening other windows will <b>invalidate the question.</b></li>
+                <li>This exam will take approx. <b>0-5 minutes</b></li>
+            </ul>
+        </div>
 
 
     </main>
     <footer>
-        <label>
-            <input type="checkbox"> I promise to answer myself without help from anyone
-        </label>
+        <div class="firstButton">
+            <input type="checkbox" id="promise" onclick="clickable()">
+            <p>I promise to answer myself without help from anyone </p>
+        </div>
+
+        <div class="continue">
+            <button type="button" id="bottoneDisable" onclick="window.location.href='quitz.html'" disabled>PROCEDE</button>
+        </div>
     </footer>
+
+
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
