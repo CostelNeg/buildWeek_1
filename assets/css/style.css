@@ -3,7 +3,7 @@
 }
 body {
   background-color: black;
-  background-image: url(buildWeek_1/assets/img/bg.jpg);
+  background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
 }
 .top img {
