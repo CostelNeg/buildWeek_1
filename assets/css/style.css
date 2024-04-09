@@ -2,7 +2,9 @@
   margin-left: 5%;
 }
 body {
-  background-image: url(bw1/assets/bg.jpg);
+  margin-left: 10%;
+  margin-right: 10%;
+  background-image: url("../img/bg.jpg");
   background-repeat: no-repeat;
 }
 .top img {
