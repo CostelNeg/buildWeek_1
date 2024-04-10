@@ -28,10 +28,21 @@ header div:last-child {
 }
 
 .bell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #ffffff;
+    cursor: pointer;
+}
+
+.bell:hover {
+    /* border: solid 10px #292B3C; */
+    background-color: #292B3C;
+    border-radius: 50%;
 }
 
 .user {
+    cursor: pointer;
     font-size: 2.5em;
     color: #8ca3ba;
     margin-left: 0.5em;
@@ -74,33 +85,50 @@ hr {
     border-color: #2F4365;
 }
 
-#resultQuiz {
+#supercontainer {
     display: flex;
-    margin-top: 50px;
+    margin-top: 20px;
 }
-.numberFlag{
+
+.argument {
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
-    width: 6%;
-}
-.correct {
-    color: #66bb6a
-}
-
-.incorrect {
-    color: #f44336
-}
-
-.argument{
+    width: 15%;
     border: solid 1px #7D7F91;
     border-radius: 3px;
     color: #7D7F91;
-    padding: 5px;
-    align-self: flex-start;
+    padding-right: 10px;
+    align-items: center;
 }
 
-.resultQuiz{
+.correct {
+    color: #66bb6a;
+    padding-right: 10px;
+}
+
+.incorrect {
+    color: #f44336;
+    padding-right: 10px;
+}
+
+.resultQuiz {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    width: 85%;
+}
+
+.question {
+    display: flex;
+    margin: 0 10px;
+}
+
+.number {
+    padding-right: 10px;
+}
+
+.answer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
