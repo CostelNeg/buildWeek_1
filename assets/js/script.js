@@ -1,3 +1,4 @@
+
 const questions = [
   {
     category: "Science: Computers",
@@ -96,103 +97,154 @@ const questions = [
     correct_answer: "Java",
     incorrect_answers: ["Python", "C", "Jakarta"],
   },
-];  
+];
 
-    let timer; // Variabile per il timer
-    const QUESTION_TIMEOUT = 30000; // Tempo in millisecondi (30 secondi)
 
-    function primaPagina() {
-      document.getElementById('consent-form').addEventListener('submit', function (event) {
-        event.preventDefault();  // Non fa ricaricare la pagina al invio del form
-        var consentCheckbox = document.getElementById('consent-checkbox');
+let timer; // Variabile per il timer
+const QUESTION_TIMEOUT = 30000; // Tempo in millisecondi (30 secondi)
 
-        if (consentCheckbox.checked) {
-          document.getElementById('form-container').style.display = 'none';
-          document.getElementById('content-container').style.display = 'block';
-          displayQuestion();
-        } else {
-          alert('Devi acconsentire');
-        }
-      });
+function primaPagina() {
+  document.getElementById('consent-form').addEventListener('submit', function (event) {
+    event.preventDefault();  // Non fa ricaricare la pagina al invio del form
+    var consentCheckbox = document.getElementById('consent-checkbox');
+
+    if (consentCheckbox.checked) {
+      document.getElementById('form-container').style.display = 'none';
+      document.getElementById('content-container').style.display = 'block';
+      displayQuestion();
+    } else {
+      alert('Devi acconsentire');
     }
+  });
+}
 
-    // Elemento div che contiene il quiz
-    const quizContainer = document.getElementById('quiz-container');
-    // Elemento div per il timer
-    const timerContainer = document.getElementById('timer-container');
-    // Elemento div per l'indice della domanda
-    const questionIndexContainer = document.getElementById('question-index');
+// Elemento div che contiene il quiz
+const quizContainer = document.getElementById('quiz-container');
+// Elemento div per il timer
+const timerContainer = document.getElementById('timer-container');
+// Elemento div per l'indice della domanda
+const questionIndexContainer = document.getElementById('question-index');
+// Elemento div per le statistiche 
+const quizSummaryContainer = document.getElementById('quiz-summary');
 
-    // Indice della domanda
-    let currentQuestionIndex = 0;
+// Variabili per le statistiche 
+let correctAnswersCount = 0;
+let wrongAnswersCount = 0;
+let unansweredQuestionsCount = 0;
 
-    // Funzione per visualizzare una domanda
-    function displayQuestion() {
-      // Ottiene la domanda
-      const question = questions[currentQuestionIndex];
+// Indice della domanda
+let currentQuestionIndex = 0;
 
-      // Genera HTML per visualizzare la domanda e risposte
-      let html = `<div>
-                          <p>${question.question}</p>`;
-      for (let j = 0; j < question.incorrect_answers.length; j++) {
-        // Inserisce le risposte errate
-        html += `<label><input type="button" onclick="checkAnswer()" name="answer" value="${question.incorrect_answers[j]}"></label><br>`;
-      }
-      // Aggiunge la risposta corretta
-      html += `<label><input type="button" name="answer" onclick="checkAnswer()" value="${question.correct_answer}"></label><br>`;
+// Funzione per visualizzare una domanda
+function displayQuestion() {
+  // Ottiene la domanda
+  const question = questions[currentQuestionIndex];
 
-      // Inserisce l'HTML
-      quizContainer.innerHTML = html;
+  // Genera HTML per visualizzare la domanda e risposte
+  let html = `<div>
+                      <p>${question.question}</p>`;
+  for (let j = 0; j < question.incorrect_answers.length; j++) {
+    // Inserisce le risposte errate
+    html += `<label><input type="button" onclick="checkAnswer(false)" name="answer" value="${question.incorrect_answers[j]}"></label><br>`;
+  }
+  // Aggiunge la risposta corretta
+  html += `<label><input type="button" name="answer" onclick="checkAnswer(true)" value="${question.correct_answer}"></label><br>`;
 
-      // Visualizza l'indice della domanda corrente
-      questionIndexContainer.innerText = `Domanda ${currentQuestionIndex + 1}/${questions.length}`;
+  // Inserisce l'HTML
+  quizContainer.innerHTML = html;
 
-      // Avvia il timer per la domanda corrente
-      startTimer();
-    }
+  // Visualizza l'indice
+  questionIndexContainer.innerText = `Domanda ${currentQuestionIndex + 1}/${questions.length}`;
 
-    // Funzione per avviare il timer
-    function startTimer() {
-      clearInterval(timer); // Resetta il timer se era già in esecuzione
+  // Avvia il timer per la domanda 
+  startTimer();
+}
 
-      // Mostra il timer nel timerContainer
-      let timeLeft = QUESTION_TIMEOUT / 1000; // Converti il tempo in secondi
+// Funzione per avviare il timer
+function startTimer() {
+  clearInterval(timer); // Resetta il timer se era già in esecuzione
+
+  // Mostra il timer nel timerContainer
+  let timeLeft = QUESTION_TIMEOUT / 1000; // Converti il tempo in secondi
+  timerContainer.innerText = `Tempo rimanente: ${timeLeft} secondi`;
+
+  timer = setInterval(() => {
+    timeLeft--;
+    if (timeLeft >= 0) {
+      // Aggiorna il testo del timer
       timerContainer.innerText = `Tempo rimanente: ${timeLeft} secondi`;
-
-      timer = setInterval(() => {
-        timeLeft--;
-        if (timeLeft >= 0) {
-          // Aggiorna il testo del timer
-          timerContainer.innerText = `Tempo rimanente: ${timeLeft} secondi`;
-        } else {
-          // Passa automaticamente alla prossima domanda quando il timer è scaduto
-          clearInterval(timer);
-          currentQuestionIndex++;
-          if (currentQuestionIndex < questions.length) {
-            displayQuestion();
-          } else {
-            // Nasconde il timer e l'indice della domanda quando il quiz è completato
-            timerContainer.style.display = 'none';
-            questionIndexContainer.style.display = 'none';
-            quizContainer.innerHTML = "<h2>Quiz completato!</h2>";
-          }
-        }
-      }, 1000); // Aggiorna ogni secondo
-    }
-
-    // Funzione per controllare la risposta, messa all'interno del HTML tramite button
-    function checkAnswer() {
-      // Resetta il timer ogni volta che viene data una risposta
-      startTimer();
-
-      // Passa alla prossima domanda se presente, altrimenti mostra un messaggio di completamento del quiz
+    } else {
+      // Passa alla prossima domanda quando il timer è scaduto
+      clearInterval(timer);
+      unansweredQuestionsCount++; // Incrementa il numero di domande non risposte
       currentQuestionIndex++;
       if (currentQuestionIndex < questions.length) {
         displayQuestion();
       } else {
-        // Nasconde il timer e l'indice della domanda quando il quiz è completato
-        timerContainer.style.display = 'none';
-        questionIndexContainer.style.display = 'none';
-        quizContainer.innerHTML = "<h2>Quiz completato!</h2>";
+        showQuizSummary(); // Mostra le statistiche del quiz alla fine
       }
     }
+  }, 1000); // Aggiorna ogni secondo
+}
+
+// Funzione per controllare la risposta
+function checkAnswer(isCorrect) {
+  // Incrementa il contatore di risposte corrette o errate
+  if (isCorrect) {
+    correctAnswersCount++;
+  } else {
+    wrongAnswersCount++;
+  }
+
+  // Passa alla prossima domanda se presente, altrimenti mostra le statistiche del quiz 
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    displayQuestion();
+  } else {
+    showQuizSummary();
+  }
+}
+
+// Funzione per mostrare le statistiche
+function showQuizSummary() {
+  // Nasconde il timer e l'indice della domanda
+  timerContainer.style.display = 'none';
+  questionIndexContainer.style.display = 'none';
+  quizContainer.style.display = "none"
+
+  // Calcola la percentuale di risposte corrette
+  const totalQuestions = questions.length;
+  const correctPercentage = (correctAnswersCount / totalQuestions) * 100;
+
+  // Genera HTML per mostrare le statistiche. il metodo toFixed limita il numero della percentuale
+  const summaryHtml = `
+    <h2>Risultati del Quiz</h2>
+    <p>Percentuale di risposte corrette: ${correctPercentage.toFixed(2)}%</p> 
+    <p>Domande corrette: ${correctAnswersCount}</p>
+    <p>Domande errate: ${wrongAnswersCount}</p>
+    <p>Domande totali: ${totalQuestions}</p>
+    <p>Domande non risposte: ${unansweredQuestionsCount}</p>
+  `;
+  // Inserisce l'HTML nel container delle statistiche del quiz
+  quizSummaryContainer.innerHTML = summaryHtml;
+  quizSummaryContainer.style.display = 'block'; // Mostra il container delle statistiche del quiz
+
+  showAnswers()
+}
+
+// Funzione per mostrare tutte le domande con le risposte
+function showAnswers() {
+  let answersHtml = '<h2>Risposte alle Domande</h2>';
+  for (let index = 0; index < questions.length; index++) {
+    const question = questions[index];
+    answersHtml += `<p><strong>Domanda ${index + 1}:</strong> ${question.question}</p>`;
+    if (index === currentQuestionIndex && wrongAnswersCount > 0) {
+      // Mostra solo la risposta sbagliata dell'utente se disponibile
+      answersHtml += `<p><strong>Risposta sbagliata:</strong> ${questions[currentQuestionIndex].incorrect_answers.join(', ')}</p>`;
+    } else {
+      // Mostra la risposta corretta per le altre domande
+      answersHtml += `<p><strong>Risposta corretta:</strong> ${question.correct_answer}</p>`;
+    }
+  }
+  quizSummaryContainer.innerHTML += answersHtml;
+}
