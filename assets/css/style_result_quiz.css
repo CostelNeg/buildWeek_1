@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit&display=swap');
+
 * {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Outfit", sans-serif;
+    ;
     box-sizing: border-box;
     margin: 0;
     color: white;
@@ -17,11 +20,13 @@ header {
 header img {
     width: 150px;
 }
-header div:last-child{
+
+header div:last-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .bell {
     color: #ffffff;
 }
@@ -37,25 +42,65 @@ main {
     padding: 85px;
 }
 
-main section {
+#circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#recap {
     display: flex;
     justify-content: space-evenly;
     background-color: #17192B;
     padding: 15px;
     border-radius: 7px;
+    margin-top: 50px;
 }
 
-main section div {
+#recap div {
     display: flex;
     flex-direction: column;
 }
 
-main section div h6 {
+#recap div h6 {
     color: #7D7F81;
 }
-main section div h2 {
+
+#recap div h2 {
     margin-top: 10px;
 }
-hr{
+
+hr {
     border-color: #2F4365;
+}
+
+#resultQuiz {
+    display: flex;
+    margin-top: 50px;
+}
+.numberFlag{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 6%;
+}
+.correct {
+    color: #66bb6a
+}
+
+.incorrect {
+    color: #f44336
+}
+
+.argument{
+    border: solid 1px #7D7F91;
+    border-radius: 3px;
+    color: #7D7F91;
+    padding: 5px;
+    align-self: flex-start;
+}
+
+.resultQuiz{
+    display: flex;
+    flex-direction: column;
 }

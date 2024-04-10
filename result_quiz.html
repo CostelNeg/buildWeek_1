@@ -22,34 +22,59 @@
         </div>
     </header>
     <main>
-        <!-- animazione superato -->
-        <!-- riepilogo domande/risposte -->
         <section>
-            <div>
-                <h6>Correct</h6>
-                <h2>10</h2>
+            <!-- animazione superato -->
+            <div id="circle">
+                <h2>Superato!</h2>
+                <span>92%</span>
+                <span>26/28 domande</span>
             </div>
-            <hr>
-            <div>
-                <h6>Wrong</h6>
-                <h2>10</h2>
-            </div>
-            <hr>
-            <div>
-                <h6>Empty</h6>
-                <h2>10</h2>
-            </div>
-            <hr>
-            <div>
-                <h6>Total</h6>
-                <h2>10</h2>
-            </div>
+            <div id="recap">
+                <!-- riepilogo domande/risposte -->
+                <div>
+                    <h6>Correct</h6>
+                    <h2>10</h2>
+                </div>
+                <hr>
+                <div>
+                    <h6>Wrong</h6>
+                    <h2>10</h2>
+                </div>
+                <hr>
+                <div>
+                    <h6>Empty</h6>
+                    <h2>10</h2>
+                </div>
+                <hr>
+                <div>
+                    <h6>Total</h6>
+                    <h2>10</h2>
+                </div>
             </div>
         </section>
         <!-- lista domande -->
-        <div>
-            <p>lsita domande</p>
-        </div>
+        <section id="resultQuiz">
+            <div class="numberFlag">
+                <!-- numero domanda -->
+                <span>(28)</span>
+                <!-- corretta -->
+                <i class="fa-solid fa-check correct"></i>
+                <!-- sbagliata -->
+                <i class="fa-solid fa-xmark incorrect"></i>
+            </div>
+            <div class="resultQuiz">
+                <!-- categoria -->
+                <span class="argument">JavaScript Beginner</span>
+                <!-- domanda -->
+                <h4>Domanda del quiz</h4>
+                <div>
+                    <!-- risposta corretta -->
+                    <span class="correctAnswer">risposta corretta</span>
+                    <!-- risposta utente -->
+                    <span class="userAnswer">risposta utente</span>
+                </div>
+            </div>
+        </section>
     </main>
 </body>
 
