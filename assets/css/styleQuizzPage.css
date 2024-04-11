@@ -50,7 +50,7 @@ body {
 .answers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   margin-top: 50px;
 }
@@ -60,7 +60,18 @@ body {
   height: 4em;
   border-radius: 50px;
   margin: 2em;
-  background-color: #d20094;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px 15px; 
+  font-size: 1.2em; 
+  margin: 10px
+}
+.answers button:hover {
+  width: 46%;
+  height: 4em;
+  border-radius: 50px;
+  margin: 2em;
+  background-color:#d20094;
   cursor: pointer;
   padding: 5px 15px; 
   font-size: 1.2em; 
