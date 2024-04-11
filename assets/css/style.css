@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+=======
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
+>>>>>>> Stashed changes
 body {
   margin-left: 10%;
   margin-right: 10%;
@@ -9,6 +13,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100%;
+  font-family: "Outfit, sans-serif";
+  font-optical-sizing: auto;
+  font-weight: 500;
+  
+  font-style: normal;
 }
 
 .top img {
@@ -32,9 +41,21 @@ main span {
   margin-top: 0%;
   font-weight: 600;
 }
+<<<<<<< Updated upstream
 
 .instruction {
+=======
+.instruction{
+  
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+>>>>>>> Stashed changes
   width: 80%;
+
 }
 
 .instruction p:nth-child(2) {

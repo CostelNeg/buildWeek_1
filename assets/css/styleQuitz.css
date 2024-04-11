@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
 * {
+<<<<<<< Updated upstream
   margin: 0%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
@@ -57,3 +59,65 @@ body {
   background-color: #d20094;
   cursor: pointer;
 }
+=======
+    margin: 0%;
+    font-family: "Outfit", "Inter", sans-serif;
+    color: white;
+  }
+  body {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-image: url(/assets/img/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+  .top img {
+      margin-top: 3em;
+      width: 150px;
+    }
+    .top{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  .quitz{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .question{
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    width: fit-content;
+  }
+  .quitzQuestions{
+      width: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .answers{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  .answers button{
+      width: 30%;
+      border-radius: 15px;
+      margin: 2em;
+      background-color: #d20094;
+  }
+
+    footer {
+  
+      text-align: center;
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+    }
+>>>>>>> Stashed changes
