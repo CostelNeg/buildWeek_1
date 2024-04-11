@@ -25,7 +25,7 @@ body {
   align-items: flex-end;
 }
 
-.quitz {
+.quizz {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -39,7 +39,7 @@ body {
   font-size:  4rem;
 }
 
-.quitzQuestions {
+.quizzQuestions {
   width: fit-content;
   display: flex;
   flex-wrap: wrap;
