@@ -106,3 +106,71 @@ function clickable() {
   }
 }
 
+const quiz = document.getElementById('quiz');
+const answerEls = document.querySelectorAll('.answer')
+const questionEl = document.getElementById('question')
+
+//prendo tutte gli input/label
+
+const a_txt = document.getElementById('a_txt');
+const b_txt = document.getElementById('b_txt');
+const c_txt = document.getElementById('c_txt');
+const d_txt = document.getElementById('d_txt');
+
+const submitBtn = document.getElementById('BtnSubmit');
+
+// inizializzo due variabili globale da utilizare nelle funzioni
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuestions()
+function loadQuestions(){
+
+  deselectAnswer()
+
+const currentQuizData=questions[currentQuiz];
+
+//prendo la domanda 
+questionEl.innerText = currentQuizData.question
+
+//prendo le risposte 
+
+a_txt.innerText = currentQuizData.correct_answer
+
+b_txt.innerText = currentQuizData.incorrect_answers[0]
+c_txt.innerText = currentQuizData.incorrect_answers[1]
+d_txt.innerText = currentQuizData.incorrect_answers[2]
+
+
+
+}
+// puoi scegliere un altra rispiosta
+function deselectAnswer(){
+  answerEls.forEach(answerEl => answerEl.checked = false)
+}
+// selezioniamo la risposta corretta
+function getSelected(){
+  let answer;
+  answerEls.forEach(answerEl => {
+    if(answerEl.checked){
+      answer  = answerEl.id
+    }
+  })
+  return answer
+}
+// mandiamo avanti on click
+submitBtn.addEventListener('click',() => {
+  const answer = getSelected()
+  if(answer){
+    if(answer === questions[currentQuiz].correct_answer){
+      score++
+    }
+    currentQuiz++
+    if(currentQuiz < questions.length){
+      loadQuestions()
+    }else {
+      quiz.innerHTML=`<p> hai risposto a ${score}/${questions.length}`
+    }
+  }
+})
